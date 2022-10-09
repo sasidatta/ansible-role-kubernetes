@@ -13,6 +13,15 @@
     docker_install_compose: false
 
   pre_tasks:
+    - name: Distribution
+      debug: msg="{{ ansible_distribution }}"
+   
+    - name: Distribution version
+      debug: msg="{{ ansible_distribution_version}}"
+  
+    - name: Distribution major version
+      debug: msg="{{ ansible_distribution_major_version }}"
+
     - name: Update apt cache.
       apt: update_cache=true cache_valid_time=600
       when: ansible_os_family == 'Debian'
